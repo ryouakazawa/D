@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 50px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        animation: bounce 1.2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+    }
+
+    img {
+        width: 200px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    img:hover {
+        transform: scale(1.1);
+    }
+
+    #letter {
+        opacity: 0;
+        visibility: hidden;
+        margin-top: 30px;
+        padding: 20px;
+        background: #111;
+        border-radius: 10px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        text-align: left;
+        transition: opacity 1s ease;
+    }
+
+    #letter.show {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>Click ↓</h2>
+
+<img src="d.gif" onclick="startLetter()" alt="Clickable GIF">
+
+<div id="letter">
+    <h3>D is for <b>Denim</b> It fades in the places that matter most. Not ruined, just lived in. Each mark proof it stayed.</h3>
+    <p id="text"></p>
+</div>
+
+    <div class="video-link">
+        <p>There’s something I want you to listen to:</p>
+        <a href="https://www.youtube.com/watch?v=4MXruqqZb8Q&list=RD4MXruqqZb8Q&start_radio=1" target="_blank">
+            Click here to watch
+        </a>
+    </div>
+
+<script>
+const message = `I’ve been thinking about what it really means that you stayed.
+
+Not just physically, not just out of habit but in the quiet, difficult moments when leaving would have been easier. 
+
+When choosing “us” meant carrying more than you should have had to.
+
+And I see it now.
+
+I see the patience you gave when I didn’t fully understand.
+
+I see the strength it took for you to remain when things weren’t easy.
+
+I'm sorry I suck at explaining. I made you feel like what you're doing wasn't enough proof that you're still fighting for "us".
+
+I see the love behind your decision to stay not because you had to, but because you chose to.
+
+That matters more to me than I’ve been able to properly say.
+
+Staying isn’t passive. It’s a decision, again and again
+especially when things are uncertain, heavy, or painful.
+
+And you chose us.
+
+I won’t take that lightly.
+
+I won’t treat it like something expected or guaranteed.
+
+What you gave, what you’re still giving is something I’m learning to value the way it deserves.
+
+So thank you. For staying, for trying, for believing that we’re worth it.
+
+I see you and I’m choosing you too.`;
+
+let index = 0;
+
+function typeWriter() {
+    if (index < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, 25);
+    }
+}
+
+function startLetter() {
+    const letter = document.getElementById("letter");
+    letter.classList.add("show");
+
+    if (index === 0) {
+        typeWriter();
+    }
+}
+</script>
+
+</body>
+</html>
